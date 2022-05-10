@@ -13,5 +13,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 #This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "webtech-projekt-backend"
-          heroku_email: "s0579159@htw-berlin.de"
+          heroku_app_name: "webtech-projekt-backend" #genau der name von Heroku 1:1?
+          heroku_email: "buiminh2000@gmx.de"
+          branch: "dev"
