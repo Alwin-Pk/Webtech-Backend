@@ -15,4 +15,3 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "webtech-projekt-backend"
           heroku_email: "s0579159@htw-berlin.de"
-          branch: "main"
