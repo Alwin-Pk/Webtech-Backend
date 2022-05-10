@@ -1,8 +1,6 @@
 package de.htw.webtechprojekt.persistence;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity(name= "guests")
 public class GuestEntity {
@@ -18,7 +16,7 @@ public class GuestEntity {
     @Column(name="last name", nullable = false)
     private String lastName;
 
-    @Column(name="first name", nuallble = false)
+    @Column(name="first name", nullable = false)
     private String firstName;
 
     @Column(name="email Adresse", nullable = false)

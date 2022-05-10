@@ -1,3 +1,4 @@
+/*
 package de.htw.webtechprojekt.web;
 
 
@@ -53,3 +54,4 @@ public class GuestRestController {
 
 
 }
+*/
