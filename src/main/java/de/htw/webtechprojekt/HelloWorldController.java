@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloWorldController {
 
     @GetMapping(path ="/")
-    public ModelAndView showHelloWorlPage(){
+    public ModelAndView showHelloWorldPage(){
         return new ModelAndView("helloworld");
     }
 
