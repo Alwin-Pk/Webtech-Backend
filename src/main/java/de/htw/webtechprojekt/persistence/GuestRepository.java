@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class GuestRepository extends JpaRepository<GuestEntity, Long>{
+public interface GuestRepository extends JpaRepository<GuestEntity, Long>{
 
     List<GuestEntity> findAllByFirstName(String firstName);
 }
