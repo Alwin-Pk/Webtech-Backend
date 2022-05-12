@@ -1,5 +1,6 @@
 package de.htw.webtechprojekt.persistence;
 
+/*
 import javax.persistence.*;
 
 @Entity(name= "guests")
@@ -82,3 +83,4 @@ public class GuestEntity {
         this.time = time;
     }
 }
+*/

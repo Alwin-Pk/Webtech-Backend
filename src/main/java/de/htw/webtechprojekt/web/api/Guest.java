@@ -1,3 +1,4 @@
+
 package de.htw.webtechprojekt.web.api;
 
 public class Guest {

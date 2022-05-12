@@ -1,5 +1,7 @@
+
 package de.htw.webtechprojekt.service;
 
+/*
 
 import de.htw.webtechprojekt.persistence.GuestEntity;
 import de.htw.webtechprojekt.persistence.GuestRepository;
@@ -31,11 +33,13 @@ public class GuestService {
         return guestEntity.map(this::transformEntity).orElse(null);
     }
 
-    /*public Guest create(GuestManipulationRequest request) {
+   */
+/* public Guest create(GuestManipulationRequest request) {
         var guestEntity = new GuestEntity(request.getEmailAdresse(), request.getFirstName(), request.getLastName(), request.getDate(), request.getTime());
         guestEntity = guestRepository.save(guestEntity);
         return transformEntity(guestEntity);
-        }*/
+        }
+*//*
 
         public Guest update(Long id, GuestManipulationRequest request){
         var guestEntityOptional = guestRepository.findById(id);
@@ -75,3 +79,4 @@ public class GuestService {
         );
     }
 }
+*/

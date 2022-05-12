@@ -1,3 +1,4 @@
+/*
 package de.htw.webtechprojekt.web.api;
 
 public class GuestManipulationRequest {
@@ -68,3 +69,4 @@ public class GuestManipulationRequest {
         }
     }
 
+*/

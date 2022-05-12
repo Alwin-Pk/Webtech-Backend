@@ -1,4 +1,5 @@
 package de.htw.webtechprojekt.persistence;
+/*
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,3 +12,4 @@ public interface GuestRepository extends JpaRepository<GuestEntity, Long>{
 
     List<GuestEntity> findAllByFirstName(String firstName);
 }
+*/
