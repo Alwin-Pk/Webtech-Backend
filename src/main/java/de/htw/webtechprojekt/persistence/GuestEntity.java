@@ -1,17 +1,17 @@
 package de.htw.webtechprojekt.persistence;
 
-/*
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity(name= "guests")
 public class GuestEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private long id;
+    @Column(name="id", nullable = false)
+    private Long id;
 
-    @Column(name="telefonnummer")
+    @Column(name="telefonnummer", nullable = false)
     private String telefonNummer;
 
     @Column(name="last name", nullable = false)
@@ -24,14 +24,20 @@ public class GuestEntity {
     private String emailAdresse;
 
     @Column(name="date", nullable = false)
-    private String date;
+    private LocalDateTime date;
 
-    @Column(name="time", nullable = false)
-    private String time;
+    public GuestEntity (String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date)
+    {
+        this.telefonNummer = telefonNummer;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.emailAdresse = emailAdresse;
+        this.date = date;
+    }
 
-    protected GuestEntity (){}
+    protected GuestEntity() {};
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -67,20 +73,11 @@ public class GuestEntity {
         this.emailAdresse = emailAdresse;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }
-*/

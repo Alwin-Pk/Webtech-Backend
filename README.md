@@ -1,3 +1,5 @@
+[![Deploy](https://github.com/Alwin-Pk/Webtech-Projekt/actions/workflows/main.yml/badge.svg)](https://github.com/Alwin-Pk/Webtech-Projekt/actions/workflows/main.yml)
+
 # Webtech-Projekt
 # Zusammen mit Minh Hoang Bui Minh entwerfen wir eine Website für ein Kosmetiksalon.
 # Es sollen verfügbare Termine angezeigt (bestenfalls im Kalender) und gebucht werden können. Nach der Buchung ist der 
