@@ -2,30 +2,31 @@ package de.htw.webtechprojekt.web;
 
 
 
+import de.htw.webtechprojekt.persistence.GuestEntity;
+import de.htw.webtechprojekt.persistence.GuestRepository;
 import de.htw.webtechprojekt.web.api.Guest;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
 @RestController
-public class GuestRestController {
+public class GuestRestController
+{
+    private final GuestRepository guestRepository;
 
+    public GuestRestController(GuestRepository guestRepository) {this.guestRepository = guestRepository;}
 
-    private List<Guest> guests;
-
-    public GuestRestController(){
-        guests = new ArrayList<>();
-        guests.add(new Guest(1,"015266653566","Test","Musterman","afje@jnddg.de","24.06.2022","14:55"));
-
-    }
-
-    @GetMapping (path = "/api/v1/guest")
-    public ResponseEntity<List<Guest>> fetchGuest(){
+    @GetMapping (path = "/api/v1/guests")
+    public ResponseEntity<List<GuestEntity>> fetchGuest(){
+        var guests = guestRepository.findAll();
         return ResponseEntity.ok(guests);
     }
 }
