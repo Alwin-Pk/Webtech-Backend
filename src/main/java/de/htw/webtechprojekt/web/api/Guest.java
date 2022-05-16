@@ -10,9 +10,9 @@ public class Guest {
     private String lastName;
     private String firstName;
     private String emailAdresse;
-    private LocalDateTime date;
+    private String date;
 
-    public Guest(Long id, String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date) {
+    public Guest(Long id, String telefonNummer, String lastName, String firstName, String emailAdresse, String date) {
         this.id = id;
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -61,11 +61,11 @@ public class Guest {
         this.emailAdresse = emailAdresse;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

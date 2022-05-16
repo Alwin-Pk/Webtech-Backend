@@ -1,5 +1,6 @@
-/*
 package de.htw.webtechprojekt.web.api;
+
+import java.time.LocalDateTime;
 
 public class GuestManipulationRequest {
 
@@ -8,15 +9,13 @@ public class GuestManipulationRequest {
         private String firstName;
         private String emailAdresse;
         private String date;
-        private String time;
 
-        public GuestManipulationRequest( String telefonNummer, String lastName, String firstName, String emailAdresse, String date, String time) {
+        public GuestManipulationRequest(String telefonNummer, String lastName, String firstName, String emailAdresse, String date) {
             this.telefonNummer = telefonNummer;
             this.lastName = lastName;
             this.firstName = firstName;
             this.emailAdresse = emailAdresse;
             this.date = date;
-            this.time = time;
         }
 
 
@@ -59,14 +58,5 @@ public class GuestManipulationRequest {
         public void setDate(String date) {
             this.date = date;
         }
-
-        public String getTime() {
-            return time;
-        }
-
-        public void setTime(String time) {
-            this.time = time;
-        }
     }
 
-*/

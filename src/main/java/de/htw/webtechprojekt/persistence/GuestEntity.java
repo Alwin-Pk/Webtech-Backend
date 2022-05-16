@@ -3,30 +3,30 @@ package de.htw.webtechprojekt.persistence;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name= "guests")
+@Entity(name = "guests")
 public class GuestEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
-    @Column(name="telefonnummer", nullable = false)
+    @Column(name = "telefonNummer")
     private String telefonNummer;
 
-    @Column(name="last name", nullable = false)
+    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name="first name", nullable = false)
+    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name="email Adresse", nullable = false)
+    @Column(name = "emailAdresse")
     private String emailAdresse;
 
-    @Column(name="date", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "date")
+    private String date;
 
-    public GuestEntity (String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date)
+    public GuestEntity (String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
     {
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -35,7 +35,7 @@ public class GuestEntity {
         this.date = date;
     }
 
-    protected GuestEntity() {};
+    public GuestEntity() {}
 
     public Long getId() {
         return id;
@@ -73,11 +73,11 @@ public class GuestEntity {
         this.emailAdresse = emailAdresse;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
