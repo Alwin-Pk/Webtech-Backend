@@ -29,10 +29,17 @@ public class GuestRestController
         this.guestService = guestService;
     }
 
-    @GetMapping (path = "/api/v1/guests")
+    @GetMapping(path = "/api/v1/guests")
     public ResponseEntity<List<Guest>> fetchGuests()
     {
         return ResponseEntity.ok(guestService.findAll());
+    }
+
+    @GetMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Guest> fetchGuestById(@PathVariable(name = "id") Long id)
+    {
+        var guest = guestService.findById(id);
+        return guest != null ? ResponseEntity.ok(guest) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(path = "/api/v1/guests")
@@ -41,5 +48,19 @@ public class GuestRestController
        var guest = guestService.create(request);
        URI uri = new URI("/api/v1/guests/" + guest.getId());
        return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Void> deleteGuestById(@PathVariable(name = "id") Long id)
+    {
+        boolean successful = guestService.deleteById(id);
+        return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Guest> updatePerson(@PathVariable Long id, @RequestBody GuestManipulationRequest request)
+    {
+        var guest = guestService.update(id, request);
+        return guest != null ? ResponseEntity.ok(guest) : ResponseEntity.notFound().build();
     }
 }

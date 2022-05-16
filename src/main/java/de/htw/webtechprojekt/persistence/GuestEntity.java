@@ -35,7 +35,7 @@ public class GuestEntity {
         this.date = date;
     }
 
-    public GuestEntity() {}
+    protected GuestEntity() {}
 
     public Long getId() {
         return id;
