@@ -4,14 +4,16 @@ import de.htw.webtechprojekt.persistence.GuestEntity;
 import de.htw.webtechprojekt.persistence.GuestRepository;
 import de.htw.webtechprojekt.web.api.Guest;
 import de.htw.webtechprojekt.web.api.GuestManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class GuestService  {
-
+public class GuestService
+{
+    @Autowired
     private final GuestRepository guestRepository;
 
     public GuestService(GuestRepository guestRepository)
@@ -73,5 +75,12 @@ public class GuestService  {
         if (!guestRepository.existsById(id)) return false;
         else guestRepository.deleteById(id);
         return true;
+    }
+
+    public Guest get(Long id)
+    {
+        return transformEntity(guestRepository.findById(id).orElseThrow(
+                () -> new NullPointerException("The Guest with ID " + id + " does not exist."))
+        );
     }
 }

@@ -3,30 +3,30 @@ package de.htw.webtechprojekt.persistence;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name = "guests")
-public class GuestEntity {
-
+@Entity (name = "guests")
+public class GuestEntity
+{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
     private Long id;
 
-    @Column(name = "telefonNummer")
+    @Column (name = "telefonNummer")
     private String telefonNummer;
 
-    @Column(name = "lastName")
+    @Column (name = "lastName")
     private String lastName;
 
-    @Column(name = "firstName")
+    @Column (name = "firstName")
     private String firstName;
 
-    @Column(name = "emailAdresse")
+    @Column (name = "emailAdresse")
     private String emailAdresse;
 
-    @Column(name = "date")
+    @Column (name = "date")
     private String date;
 
-    public GuestEntity (String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
+    public GuestEntity(String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
     {
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -37,47 +37,76 @@ public class GuestEntity {
 
     protected GuestEntity() {}
 
-    public Long getId() {
+    public Long getId()
+    {
         return id;
     }
 
-    public String getTelefonNummer() {
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public String getTelefonNummer()
+    {
         return telefonNummer;
     }
 
-    public void setTelefonNummer(String telefonNummer) {
+    public void setTelefonNummer(String telefonNummer)
+    {
         this.telefonNummer = telefonNummer;
     }
 
-    public String getLastName() {
+    public String getLastName()
+    {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
+    public String getFirstName()
+    {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName)
+    {
         this.firstName = firstName;
     }
 
-    public String getEmailAdresse() {
+    public String getEmailAdresse()
+    {
         return emailAdresse;
     }
 
-    public void setEmailAdresse(String emailAdresse) {
+    public void setEmailAdresse(String emailAdresse)
+    {
         this.emailAdresse = emailAdresse;
     }
 
-    public String getDate() {
+    public String getDate()
+    {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(String date)
+    {
         this.date = date;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "GuestEntity{" +
+                "id=" + id +
+                ", telefonNummer='" + telefonNummer + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", emailAdresse='" + emailAdresse + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

@@ -7,6 +7,7 @@ import de.htw.webtechprojekt.persistence.GuestRepository;
 import de.htw.webtechprojekt.service.GuestService;
 import de.htw.webtechprojekt.web.api.Guest;
 import de.htw.webtechprojekt.web.api.GuestManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ import java.util.List;
 @RestController
 public class GuestRestController
 {
+    @Autowired
     private final GuestService guestService;
 
     public GuestRestController(GuestService guestService)
