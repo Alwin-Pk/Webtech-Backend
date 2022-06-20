@@ -42,7 +42,7 @@ public class GuestService
         return transformEntity(guestEntity);
     }
 
-    private Guest transformEntity(GuestEntity guestEntity)
+    public Guest transformEntity(GuestEntity guestEntity)
     {
         return new Guest(
                 guestEntity.getId(),

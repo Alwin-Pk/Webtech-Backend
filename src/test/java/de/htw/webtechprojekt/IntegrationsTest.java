@@ -2,6 +2,7 @@ package de.htw.webtechprojekt;
 
 import de.htw.webtechprojekt.persistence.GuestEntity;
 import de.htw.webtechprojekt.service.GuestService;
+import de.htw.webtechprojekt.web.api.Guest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(IntegrationsTest.class)
 public class IntegrationsTest
 {
- /*   @Autowired
+    @Autowired
     private MockMvc mockMvc;
 
     @MockBean
@@ -27,13 +28,12 @@ public class IntegrationsTest
     @Test
     public void testGuestRoute() throws Exception
     {
-        //Test data and service mock
-        var g3 = new GuestEntity ("0123456789",
-                                  "Musterfrau",
-                                  "Franciska",
-                                  "franci.musterfrau@test.de",
-                                  "25.05.2022 20:07");
-        g3.setId(3L);
+        // Test data and service mock
+        var g3 = new Guest(3L, "0123456789",
+                           "Musterfrau",
+                           "Franciska",
+                           "franci.musterfrau@test.de",
+                           "25.05.2022 20:07");
         when(guestServiceTest.get(3L)).thenReturn(g3);
 
         //Expected String
@@ -51,5 +51,5 @@ public class IntegrationsTest
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(containsString(expected)));
-    }*/
+    }
 }

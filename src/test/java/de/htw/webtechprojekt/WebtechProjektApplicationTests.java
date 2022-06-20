@@ -66,7 +66,7 @@ class WebtechProjektApplicationTests {
 
 		g1.setId(1L);
 		g2.setId(2L);
-		//setId Methode in GuestEntity Klasse in Ordnung?
+
 		doReturn(Optional.of(g1)).when(guestRepositoryTest).findById(1L);
 		doReturn(Optional.of(g2)).when(guestRepositoryTest).findById(2L);
 
@@ -74,6 +74,5 @@ class WebtechProjektApplicationTests {
 
 		assertEquals("Alwin", acutal.getFirstName());
 	}
-
 
 }

@@ -44,7 +44,7 @@ public class GuestEntity
 
     public void setId(Long id)
     {
-        this.id = id;
+        if (this.id.describeConstable().isPresent()) this.id = id;
     }
 
     public String getTelefonNummer()
