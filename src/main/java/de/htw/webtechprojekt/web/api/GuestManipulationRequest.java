@@ -20,6 +20,7 @@ public class GuestManipulationRequest
         this.date = date;
     }
 
+    public GuestManipulationRequest() {}
 
     public String getTelefonNummer()
     {
