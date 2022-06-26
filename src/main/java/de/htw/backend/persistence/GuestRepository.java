@@ -1,4 +1,4 @@
-package de.htw.webtechprojekt.persistence;
+package de.htw.backend.persistence;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

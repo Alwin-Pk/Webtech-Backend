@@ -1,21 +1,16 @@
-package de.htw.webtechprojekt.web;
+package de.htw.backend.web;
 
 
 
-import de.htw.webtechprojekt.persistence.GuestEntity;
-import de.htw.webtechprojekt.persistence.GuestRepository;
-import de.htw.webtechprojekt.service.GuestService;
-import de.htw.webtechprojekt.web.api.Guest;
-import de.htw.webtechprojekt.web.api.GuestManipulationRequest;
+import de.htw.backend.service.GuestService;
+import de.htw.backend.web.api.Guest;
+import de.htw.backend.web.api.GuestManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 

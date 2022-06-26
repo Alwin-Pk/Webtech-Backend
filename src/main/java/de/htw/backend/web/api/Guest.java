@@ -1,7 +1,5 @@
 
-package de.htw.webtechprojekt.web.api;
-
-import java.time.LocalDateTime;
+package de.htw.backend.web.api;
 
 public class Guest {
 

@@ -1,9 +1,9 @@
-package de.htw.webtechprojekt.service;
+package de.htw.backend.service;
 
-import de.htw.webtechprojekt.persistence.GuestEntity;
-import de.htw.webtechprojekt.persistence.GuestRepository;
-import de.htw.webtechprojekt.web.api.Guest;
-import de.htw.webtechprojekt.web.api.GuestManipulationRequest;
+import de.htw.backend.persistence.GuestEntity;
+import de.htw.backend.persistence.GuestRepository;
+import de.htw.backend.web.api.Guest;
+import de.htw.backend.web.api.GuestManipulationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

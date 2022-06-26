@@ -1,6 +1,4 @@
-package de.htw.webtechprojekt.persistence;
-
-import de.htw.webtechprojekt.web.api.Guest;
+package de.htw.backend.persistence;
 
 import javax.persistence.*;
 

@@ -1,9 +1,9 @@
-package de.htw.webtechprojekt;
+package de.htw.backend;
 
-import de.htw.webtechprojekt.persistence.GuestEntity;
-import de.htw.webtechprojekt.persistence.GuestRepository;
-import de.htw.webtechprojekt.service.GuestService;
-import de.htw.webtechprojekt.web.api.Guest;
+import de.htw.backend.persistence.GuestEntity;
+import de.htw.backend.persistence.GuestRepository;
+import de.htw.backend.service.GuestService;
+import de.htw.backend.web.api.Guest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest
-class WebtechProjektApplicationTests {
+class BackendApplicationTests
+{
 
 	@Autowired
 	private GuestService guestServiceTest;
@@ -74,5 +75,4 @@ class WebtechProjektApplicationTests {
 
 		assertEquals("Alwin", acutal.getFirstName());
 	}
-
 }

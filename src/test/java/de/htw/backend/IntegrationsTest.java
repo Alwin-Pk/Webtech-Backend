@@ -1,12 +1,15 @@
-package de.htw.webtechprojekt;
+package de.htw.backend;
 
-import de.htw.webtechprojekt.persistence.GuestEntity;
-import de.htw.webtechprojekt.service.GuestService;
-import de.htw.webtechprojekt.web.api.Guest;
+import de.htw.backend.service.AppointmentService;
+import de.htw.backend.service.GuestService;
+import de.htw.backend.web.GuestRestController;
+import de.htw.backend.web.api.Appointment;
+import de.htw.backend.web.api.Guest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -16,29 +19,34 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@WebMvcTest(IntegrationsTest.class)
+@ComponentScan(basePackages = "de.htw")
+@WebMvcTest(GuestRestController.class)
 public class IntegrationsTest
 {
-//    @Autowired
+    @Autowired
     private MockMvc mockMvc;
 
-//    @MockBean
+    @MockBean
     private GuestService guestServiceTest;
 
-//    @Test
-  /*  public void testGuestRoute() throws Exception
+    @MockBean
+    private AppointmentService appointmentServiceTest;
+
+    @Test
+    public void testGuestRoute() throws Exception
     {
         // Test data and service mock
-        var g3 = new Guest(3L, "0123456789",
+        Guest g3 = new Guest(23L, "0123456789",
                            "Musterfrau",
                            "Franciska",
                            "franci.musterfrau@test.de",
                            "25.05.2022 20:07");
-        when(guestServiceTest.get(3L)).thenReturn(g3);
+
+        when(guestServiceTest.get(23L)).thenReturn(g3);
 
         //Expected String
-        String expected = "GuestEntity{" +
-                "id=" + "3" +
+        String expected = "Guest{" +
+                "id=" + "23" +
                 ", telefonNummer='" + "0123456789" + '\'' +
                 ", lastName='" + "Musterfrau" + '\'' +
                 ", firstName='" + "Franciska" + '\'' +
@@ -47,9 +55,23 @@ public class IntegrationsTest
                 '}';
 
         //Call and assertion
-        this.mockMvc.perform(get("/api/v1/guests/3"))
+        this.mockMvc.perform(get("/api/v1/guests/23"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string(containsString(expected)));
-    }*/
+    }
+
+    @Test
+    public void testAppointmentRoute() throws Exception
+    {
+        // Test data and service mock
+        Appointment a3 = new Appointment(50L, "17:21", "26.06.2022", 23L);
+
+        when(appointmentServiceTest.get(50L)).thenReturn(a3);
+
+        //Call and assertion
+        this.mockMvc.perform(get("/api/v1/appointments/50"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
 }

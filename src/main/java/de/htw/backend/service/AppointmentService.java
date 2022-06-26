@@ -1,10 +1,9 @@
-package de.htw.webtechprojekt.service;
+package de.htw.backend.service;
 
-import de.htw.webtechprojekt.persistence.AppointmentEntity;
-import de.htw.webtechprojekt.persistence.AppointmentRepo;
-import de.htw.webtechprojekt.persistence.GuestEntity;
-import de.htw.webtechprojekt.web.api.Appointment;
-import de.htw.webtechprojekt.web.api.Guest;
+import de.htw.backend.persistence.AppointmentEntity;
+import de.htw.backend.persistence.AppointmentRepo;
+import de.htw.backend.web.api.Appointment;
+import de.htw.backend.web.api.Guest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +34,18 @@ public class AppointmentService
         return appointment.stream()
                 .map(this::transformAppointment)
                 .collect(Collectors.toList());
+    }
+
+    public Appointment get(Long id)
+    {
+        return transformAppointment(appointmentRepo.findById(id).orElseThrow(
+                () -> new NullPointerException("The Guest with ID " + id + " does not exist."))
+        );
+    }
+
+    public Appointment findById(Long id)
+    {
+        var AppointmentEntity = appointmentRepo.findById(id);
+        return AppointmentEntity.isPresent() ? transformAppointment(AppointmentEntity.get()) : null;
     }
 }

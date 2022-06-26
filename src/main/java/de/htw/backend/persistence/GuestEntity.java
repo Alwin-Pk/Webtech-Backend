@@ -1,7 +1,6 @@
-package de.htw.webtechprojekt.persistence;
+package de.htw.backend.persistence;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity (name = "guests")
 public class GuestEntity

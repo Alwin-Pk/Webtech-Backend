@@ -1,4 +1,4 @@
-package de.htw.webtechprojekt.web.api;
+package de.htw.backend.web.api;
 
 public class AppointmentEditRequest
 {

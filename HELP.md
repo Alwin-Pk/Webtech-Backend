@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'de.htw.webtech-projekt' is invalid and this project uses 'de.htw.webtechprojekt' instead.
+* The original package name 'de.htw.webtech-projekt' is invalid and this project uses 'de.htw.backend' instead.
 
 # Getting Started
 
