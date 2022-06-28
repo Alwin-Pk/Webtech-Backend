@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -40,11 +41,17 @@ public class GuestRestController
     }
 
     @PostMapping(path = "/api/v1/guests")
-    public ResponseEntity<Void> createGuest(@RequestBody GuestManipulationRequest request) throws URISyntaxException
+    public ResponseEntity<Void> createGuest(@Valid @RequestBody GuestManipulationRequest request) throws URISyntaxException
     {
-       var guest = guestService.create(request);
-       URI uri = new URI("/api/v1/guests/" + guest.getId());
-       return ResponseEntity.created(uri).build();
+       var valid = validate(request);
+       if (valid)
+       {
+           var guest = guestService.create(request);
+           URI uri = new URI("/api/v1/guests/" + guest.getId());
+           return ResponseEntity.created(uri).build();
+       } else {
+           return ResponseEntity.badRequest().build();
+       }
     }
 
     @DeleteMapping(path = "/api/v1/guests/{id}")
@@ -59,5 +66,19 @@ public class GuestRestController
     {
         var guest = guestService.update(id, request);
         return guest != null ? ResponseEntity.ok(guest) : ResponseEntity.notFound().build();
+    }
+
+    private boolean validate(GuestManipulationRequest request)
+    {
+        return request.getFirstName() != null
+                && !request.getFirstName().isBlank()
+                && request.getLastName() != null
+                && !request.getLastName().isBlank()
+                && request.getTelefonNummer() != null
+                && !request.getTelefonNummer().isBlank()
+                && request.getEmailAdresse() != null
+                && !request.getEmailAdresse().isBlank()
+                && request.getDate() != null
+                && !request.getDate().isBlank();
     }
 }

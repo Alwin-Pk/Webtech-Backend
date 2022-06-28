@@ -1,13 +1,28 @@
 package de.htw.backend.web.api;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class GuestManipulationRequest
 {
 
     private String telefonNummer;
+
     private String lastName;
+
+    @Size(min = 3, max = 100, message = "Der Name muss mindestens aus 3 Buchstaben bestehen.")
     private String firstName;
+
     private String emailAdresse;
+
+    @NotBlank(message = "Das Feld darf nicht leer sein.")
     private String date;
+
+/*    @Pattern(
+            regexp = "MALE|FEMALE|DIVERSE",
+            message = "Please provide 'MALE', 'FEMALE' or 'DIVERSE' for gender."
+    )*/
 
     public GuestManipulationRequest(String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
     {

@@ -1,5 +1,7 @@
 package de.htw.backend;
 
+import de.htw.backend.persistence.AppointmentRepo;
+import de.htw.backend.persistence.GuestRepository;
 import de.htw.backend.service.AppointmentService;
 import de.htw.backend.service.GuestService;
 import de.htw.backend.web.GuestRestController;
