@@ -1,4 +1,4 @@
-[![Deploy](https://github.com/Alwin-Pk/Webtech-Projekt/actions/workflows/main.yml/badge.svg)](https://github.com/Alwin-Pk/Webtech-Projekt/actions/workflows/main.yml)
+[![Deploy](https://github.com/Alwin-Pk/Webtech-Backend/actions/workflows/main.yml/badge.svg)](https://github.com/Alwin-Pk/Webtech-Backend/actions/workflows/main.yml)
 
 # Webtech-Projekt
 # Zusammen mit Minh Hoang Bui Minh entwerfen wir eine Website für ein Kosmetiksalon.

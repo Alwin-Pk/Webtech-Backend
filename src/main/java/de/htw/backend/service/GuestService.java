@@ -4,7 +4,6 @@ import de.htw.backend.persistence.GuestEntity;
 import de.htw.backend.persistence.GuestRepository;
 import de.htw.backend.web.api.Guest;
 import de.htw.backend.web.api.GuestManipulationRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.stream.Collectors;
 @Service
 public class GuestService
 {
-    @Autowired
     private final GuestRepository guestRepository;
 
     public GuestService(GuestRepository guestRepository)
@@ -32,7 +30,9 @@ public class GuestService
     public Guest findById(Long id)
     {
         var guestEntity = guestRepository.findById(id);
-        return guestEntity.isPresent() ? transformEntity(guestEntity.get()) : null;
+        return guestEntity.map(this::transformEntity).orElse(null);
+//        -- Das gleiche wie oben, nur andere Schreibweise --
+//        return guestEntity.isPresent() ? transformEntity(guestEntity.get()) : null;
     }
 
     public Guest create(GuestManipulationRequest request)

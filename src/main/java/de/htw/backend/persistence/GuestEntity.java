@@ -43,7 +43,8 @@ public class GuestEntity
 
     public void setId(Long id)
     {
-        this.id = id;
+        if (this.id == null) this.id = id;
+        else throw new IllegalCallerException("Cannot set guest id, because guest already has id (" + this.id + ") assigned.");
     }
 
     public String getTelefonNummer()
@@ -94,18 +95,5 @@ public class GuestEntity
     public void setDate(String date)
     {
         this.date = date;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "GuestEntity{" +
-                "id=" + id +
-                ", telefonNummer='" + telefonNummer + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", emailAdresse='" + emailAdresse + '\'' +
-                ", date='" + date + '\'' +
-                '}';
     }
 }

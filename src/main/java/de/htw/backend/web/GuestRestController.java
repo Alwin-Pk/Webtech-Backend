@@ -5,7 +5,6 @@ package de.htw.backend.web;
 import de.htw.backend.service.GuestService;
 import de.htw.backend.web.api.Guest;
 import de.htw.backend.web.api.GuestManipulationRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -19,7 +18,6 @@ import java.util.List;
 @RestController
 public class GuestRestController
 {
-    @Autowired
     private final GuestService guestService;
 
     public GuestRestController(GuestService guestService)
