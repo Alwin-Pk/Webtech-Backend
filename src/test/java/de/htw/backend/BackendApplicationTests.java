@@ -16,36 +16,11 @@ import static org.mockito.Mockito.doReturn;
 @SpringBootTest
 class BackendApplicationTests
 {
-
 	@Autowired
 	private GuestService guestServiceTest;
 
 	@MockBean
 	private GuestRepository guestRepositoryTest;
-
-	@Test
-	@DisplayName("Simple toString test, should return the GuestEntity object as a String")
-	void testGuestEntityToString()
-	{
-		var g1 = new GuestEntity(
-				"12345",
-				"Pekala",
-				"Alwin",
-				"s0579159@htw-berlin.de",
-				"25.05.2022");
-		g1.setId(0L);
-
-		String expected = "GuestEntity{" +
-				"id=" + "0" +
-				", telefonNummer='" + "12345" + '\'' +
-				", lastName='" + "Pekala" + '\'' +
-				", firstName='" + "Alwin" + '\'' +
-				", emailAdresse='" + "s0579159@htw-berlin.de" + '\'' +
-				", date='" + "25.05.2022" + '\'' +
-				'}';
-
-		assertEquals(expected, g1.toString());
-	}
 
 	@Test
 	@DisplayName("Should find a guest by its id and return the first name")
