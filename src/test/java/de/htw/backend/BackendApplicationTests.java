@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
@@ -26,19 +29,23 @@ class BackendApplicationTests
 	@DisplayName("Should find a guest by its id and return the first name")
 	void testGuestEntity()
 	{
+		String str = "2022-03-07 11:30";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		var dateTime = LocalDateTime.parse(str, formatter);
+
 		var g1 = new GuestEntity(
 						   "12345",
 						   "Pekala",
 						   "Alwin",
 						   "s0579159@htw-berlin.de",
-						   "25.05.2022");
+						   dateTime);
 		//Warum zwei GuestEntities wenn wir nur eine vergleichen?
 		var g2 = new GuestEntity(
 						   "67890",
 						   "Mustermann",
 						   "Max",
 						   "max.mustermann@test.de",
-						   "25.05.2022");
+						   dateTime);
 
 		g1.setId(1L);
 		g2.setId(2L);

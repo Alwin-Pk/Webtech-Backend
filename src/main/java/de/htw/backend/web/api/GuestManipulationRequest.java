@@ -1,8 +1,10 @@
 package de.htw.backend.web.api;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 public class GuestManipulationRequest
 {
@@ -17,14 +19,14 @@ public class GuestManipulationRequest
     private String emailAdresse;
 
     @NotBlank(message = "Das Feld darf nicht leer sein.")
-    private String date;
+    private LocalDateTime date;
 
 /*    @Pattern(
             regexp = "MALE|FEMALE|DIVERSE",
             message = "Please provide 'MALE', 'FEMALE' or 'DIVERSE' for gender."
     )*/
 
-    public GuestManipulationRequest(String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
+    public GuestManipulationRequest(String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date)
     {
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -75,12 +77,12 @@ public class GuestManipulationRequest
         this.emailAdresse = emailAdresse;
     }
 
-    public String getDate()
+    public LocalDateTime getDate()
     {
         return date;
     }
 
-    public void setDate(String date)
+    public void setDate(LocalDateTime date)
     {
         this.date = date;
     }

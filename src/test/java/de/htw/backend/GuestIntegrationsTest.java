@@ -10,6 +10,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -28,12 +31,16 @@ public class GuestIntegrationsTest
     @Test
     public void testGuestRoute() throws Exception
     {
+        String str = "2022-03-07 11:30";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        var dateTime = LocalDateTime.parse(str, formatter);
+
         // Test data and service mock
         Guest guest = new Guest(23L, "0123456789",
                            "Musterfrau",
                            "Franciska",
                            "franci.musterfrau@test.de",
-                           "25.05.2022 20:07");
+                           dateTime);
 
         doReturn(guest).when(guestService).findById(23L);
 
@@ -41,7 +48,7 @@ public class GuestIntegrationsTest
         String expected = "\"id\":23,\"telefonNummer\":\"0123456789\"," +
                           "\"lastName\":\"Musterfrau\",\"firstName\":\"Franciska\"," +
                           "\"emailAdresse\":\"franci.musterfrau@test.de\"," +
-                          "\"date\":\"25.05.2022 20:07\"";
+                          "\"date\":[2022,3,7,11,30]";
 
         //Call and assertion
         this.mockMvc.perform(get("/api/v1/guests/23"))

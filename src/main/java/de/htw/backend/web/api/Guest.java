@@ -1,6 +1,8 @@
 
 package de.htw.backend.web.api;
 
+import java.time.LocalDateTime;
+
 public class Guest {
 
     private Long id;
@@ -8,9 +10,9 @@ public class Guest {
     private String lastName;
     private String firstName;
     private String emailAdresse;
-    private String date;
+    private LocalDateTime date;
 
-    public Guest(Long id, String telefonNummer, String lastName, String firstName, String emailAdresse, String date) {
+    public Guest(Long id, String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date) {
         this.id = id;
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -57,11 +59,11 @@ public class Guest {
         this.emailAdresse = emailAdresse;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

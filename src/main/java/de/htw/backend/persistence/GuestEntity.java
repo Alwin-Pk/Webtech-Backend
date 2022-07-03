@@ -1,6 +1,7 @@
 package de.htw.backend.persistence;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity (name = "guests")
 public class GuestEntity
@@ -23,9 +24,9 @@ public class GuestEntity
     private String emailAdresse;
 
     @Column (name = "date")
-    private String date;
+    private LocalDateTime date;
 
-    public GuestEntity(String telefonNummer, String lastName, String firstName, String emailAdresse, String date)
+    public GuestEntity(String telefonNummer, String lastName, String firstName, String emailAdresse, LocalDateTime date)
     {
         this.telefonNummer = telefonNummer;
         this.lastName = lastName;
@@ -87,12 +88,12 @@ public class GuestEntity
         this.emailAdresse = emailAdresse;
     }
 
-    public String getDate()
+    public LocalDateTime getDate()
     {
         return date;
     }
 
-    public void setDate(String date)
+    public void setDate(LocalDateTime date)
     {
         this.date = date;
     }
