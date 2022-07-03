@@ -76,6 +76,7 @@ public class GuestRestController
                 && !request.getTelefonNummer().isBlank()
                 && request.getEmailAdresse() != null
                 && !request.getEmailAdresse().isBlank()
-                && request.getDate() != null;
+                && request.getDate() != null
+                && !request.getDate().isBlank();
     }
 }
