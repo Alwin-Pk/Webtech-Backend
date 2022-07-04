@@ -39,18 +39,17 @@ public class GuestRestController
     }
 
     @PostMapping(path = "/api/v1/guests")
-    public ResponseEntity<Void> createGuest(@RequestBody GuestManipulationRequest request) throws URISyntaxException
+    public ResponseEntity<Void> createGuest(@Valid @RequestBody GuestManipulationRequest request) throws URISyntaxException
     {
-//        @Valid
-//       var valid = validate(request);
-//       if (valid)
-//       {
+       var valid = validate(request);
+       if (valid)
+       {
            var guest = guestService.create(request);
            URI uri = new URI("/api/v1/guests/" + guest.getId());
            return ResponseEntity.created(uri).build();
-//       } else {
-//           return ResponseEntity.badRequest().build();
-//       }
+       } else {
+           return ResponseEntity.badRequest().build();
+       }
     }
 
     @DeleteMapping(path = "/api/v1/guests/{id}")

@@ -43,9 +43,8 @@ public class GuestEntity
 
     public void setId(Long id)
     {
-//        if (this.id == null)
-            this.id = id;
-//        else throw new IllegalCallerException("Cannot set guest id, because guest already has id (" + this.id + ") assigned.");
+        if (this.id == null) this.id = id;
+        else throw new IllegalCallerException("Cannot set guest id, because guest already has id (" + this.id + ") assigned.");
     }
 
     public String getTelefonNummer()
