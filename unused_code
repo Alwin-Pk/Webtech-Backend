@@ -1,0 +1,118 @@
+Aus RestController:
+
+    private final GuestService guestService;
+
+    public GuestRestController (GuestService guestService){
+        this.guestService = guestService;
+    }
+
+    @GetMapping(path = "/api/v1/guests")
+    public ResponseEntity<List<Guest>> fetchGuests(){
+        return ResponseEntity.ok(guestService.findAll());
+    }
+
+    @GetMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Guest> fetchGuestById(@PathVariable Long id){
+        var guest = guestService.findById(id);
+        return guest !=null? ResponseEntity.ok(guest) : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping(path = "/api/v1/guests")
+    public ResponseEntity<Void> createGuest(@Validated @RequestBody GuestManipulationRequest request) throws URISyntaxException{
+        var guest = guestService.create(request);
+        URI uri = new URI("/api/v1/guests/" + guest.getId());
+        return ResponseEntity.created(uri).build();
+    }
+
+
+
+    @PutMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Guest> updateGuest(@PathVariable Long id, @RequestBody GuestManipulationRequest request){
+        var guest = guestService.update(id, request);
+        return guest != null? ResponseEntity.ok(guest) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping(path = "/api/v1/guests/{id}")
+    public ResponseEntity<Void> deleteGuest(@PathVariable Long id){
+        boolean successful = guestService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+}
+
+Aus GuestService:
+
+import de.htw.backend.persistence.GuestEntity;
+import de.htw.backend.persistence.GuestRepository;
+import de.htw.backend.web.api.Guest;
+import org.springframework.stereotype.Service;
+import de.htw.backend.web.api.GuestManipulationRequest;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class GuestService {
+
+    private final GuestRepository guestRepository;
+
+    public GuestService (GuestRepository guestRepository){
+        this.guestRepository = guestRepository;
+    }
+
+    public List<Guest> findAll(){
+        List<GuestEntity> guests = guestRepository.findAll();
+        return guests.stream()
+                .map(this::transformEntity)
+                .collect(Collectors.toList());
+    }
+
+    public Guest findById (Long id){
+        var guestEntity = guestRepository.findById(id);
+        return guestEntity.map(this::transformEntity).orElse(null);
+    }
+
+ public Guest create(GuestManipulationRequest request) {
+        var guestEntity = new GuestEntity(request.getEmailAdresse(), request.getFirstName(), request.getLastName(), request.getDate(), request.getTime());
+        guestEntity = guestRepository.save(guestEntity);
+        return transformEntity(guestEntity);
+        }
+
+
+        public Guest update(Long id, GuestManipulationRequest request){
+        var guestEntityOptional = guestRepository.findById(id);
+        if (guestEntityOptional.isEmpty()){
+            return null;
+        }
+
+        var guestEntity = guestEntityOptional.get();
+        guestEntity.setEmailAdresse(request.getEmailAdresse());
+        guestEntity.setFirstName(request.getFirstName());
+        guestEntity.setLastName(request.getLastName());
+        guestEntity.setDate(request.getDate());
+        guestEntity.setTime(request.getTime());
+        guestEntity = guestRepository.save(guestEntity);
+
+        return  transformEntity(guestEntity);
+    }
+
+    public boolean deleteById (Long id){
+        if (!guestRepository.existsById(id)){
+            return false;
+        }
+
+        guestRepository.deleteById(id);
+        return true;
+    }
+
+    private Guest transformEntity(GuestEntity guestEntity){
+        return new Guest(
+                guestEntity.getId(),
+                guestEntity.getTelefonNummer(),
+                guestEntity.getLastName(),
+                guestEntity.getFirstName(),
+                guestEntity.getEmailAdresse(),
+                guestEntity.getDate(),
+        );
+    }
+}
+
