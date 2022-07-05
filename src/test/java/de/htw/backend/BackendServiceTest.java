@@ -1,4 +1,3 @@
-/*
 package de.htw.backend;
 
 import de.htw.backend.persistence.GuestRepository;
@@ -27,9 +26,10 @@ public class BackendServiceTest implements WithAssertions
     void trueIfDeleteSucceeds()
     {
         Long testId = 1337L;
-        boolean result = serviceTest.deleteById(testId);
 
         doReturn(true).when(repo).existsById(testId);
+
+        boolean result = serviceTest.deleteById(testId);
 
         verify(repo).deleteById(testId);
         assertThat(result).isTrue();
@@ -40,12 +40,12 @@ public class BackendServiceTest implements WithAssertions
     void falseIfIdDoesNotExist()
     {
         Long testId = 1337L;
-        boolean result = serviceTest.deleteById(testId);
 
         doReturn(false).when(repo).existsById(testId);
+
+        boolean result = serviceTest.deleteById(testId);
 
         verifyNoMoreInteractions(repo);
         assertThat(result).isFalse();
     }
 }
-*/
